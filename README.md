@@ -6,21 +6,24 @@ based on http://www.rsj.or.jp/jrsj/for_authors/stylefile/
 
 [![Build Status](https://travis-ci.org/furushchev/jrsj-report-template.svg)](https://travis-ci.org/furushchev/jrsj-report-template)
 
-### 1. Prerequisities
+### 1. Build
 
-```bash
-# only for ubuntu 12.04
-$ sudo apt-add-repository ppa:texlive-backports/ppa
-$ sudo apt-get update
-```
+  ```bash
+  latexmk
+  ```
 
-### 2. Edit LaTeX files
+### 2. Build using docker
 
-### 3. Make pdf
+  ```bash
+  docker run --rm -v $(pwd):/workspace furushchev/latex
+  ```
 
-```bash
-$ make
-```
+### 3. Cleanup
+
+
+  ```bash
+  latexmk -C
+  ```
 
 ### 4. Release pdf
 
@@ -30,29 +33,21 @@ $ make
   ```bash
   travis enable
   travis setup releases --force
-```
+  ```
 
 - After `travis` command, configuration like below will be appended to `.travis.yml`.
 
   ```yaml
-deploy:
-  provider: releases
-  api_key: "GITHUB OAUTH TOKEN"
-  file: main.pdf
-  skip_cleanup: true
-  on:
-    tags: true
-```
+  deploy:
+    provider: releases
+    api_key: "GITHUB OAUTH TOKEN"
+    file: main.pdf
+    skip_cleanup: true
+    on:
+      tags: true
+  ```
 
 **NOTE** Please make sure you have `skip_cleanup` and `on: tags` is `true`
 
 
 - Push your tag by `git push --tags`. Then you can watch pdf in github releases.
-
-### Optional. cleaning
-
-```bash
-$ make clean
-# or
-$ make wipe
-```
