@@ -1,27 +1,3 @@
-### https://raw.github.com/github/gitignore/23aad6abc4ed1aafb425f6e09334c4e35ad146ac/OCaml.gitignore
-
-*.annot
-*.cmo
-*.cma
-*.cmi
-*.a
-*.o
-*.cmx
-*.cmxs
-*.cmxa
-
-# ocamlbuild working directory
-_build/
-
-# ocamlbuild targets
-*.byte
-*.native
-
-# oasis generated files
-setup.data
-setup.log
-
-
 ### https://raw.github.com/github/gitignore/23aad6abc4ed1aafb425f6e09334c4e35ad146ac/Global/OSX.gitignore
 
 .DS_Store
@@ -253,3 +229,5 @@ sympy-plots-for-*.tex/
 
 *.bb
 *.xbb
+
+build
